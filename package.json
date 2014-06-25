@@ -1,0 +1,26 @@
+{
+  "name": "isolated-coverage",
+  "version": "1.0.0",
+  "repository": "https://github.com/mdevils/isolated-coverage",
+  "description": "Isolated coverage",
+  "author": "Marat Dulin",
+  "license": "MIT",
+  "dependencies": {
+    "chalk": "^0.4.0",
+    "istanbul": "^0.2.11",
+    "minimatch": "^0.3.0",
+    "vow": "^0.4.4",
+    "vow-fs": "^0.3.2"
+  },
+  "peerDependencies": {
+    "mocha-phantomjs": "^3.2.0"
+  },
+  "bin": {
+    "isolated-coverage": "./bin/isolated-coverage.js"
+  },
+  "files": [
+    "bin",
+    "hooks",
+    "js"
+  ]
+}
