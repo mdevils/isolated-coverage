@@ -58,6 +58,7 @@ class IsolatedCoverage {
         var filterSourceFiles = (filename: string): boolean => {
             return !this.ignores.some((ignore) => minimatch(filename, ignore));
         };
+        var reportBuildResult;
 
         return fs.createTmpDir()
             .then((newTmpDir) => {
@@ -120,11 +121,15 @@ class IsolatedCoverage {
             .then((result) => {
                 var coverageJsonPath = path.join(tmpProjectDir, 'coverage.json');
                 return vowFs.write(coverageJsonPath, JSON.stringify(result), 'utf8').then(() => {
-                    return istanbul.buildReport(coverageJsonPath, this.reporter);
+                    return istanbul.buildReport(coverageJsonPath, this.reporter).then((result: string) => {
+                        reportBuildResult = result;
+                    });
                 });
             })
             .then(() => {
-                return fs.remove(tmpDir);
+                return fs.remove(tmpDir).then(() => {
+                    return reportBuildResult;
+                });
             }, (e) => {
                 return fs.remove(tmpDir).then(() => {
                     throw e;

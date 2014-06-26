@@ -44,4 +44,6 @@ isolatedCoverage
     .progress((message: Message) => {
         logger.log(message);
     })
-    .done();
+    .done((result) => {
+        console.log(result);
+    });
