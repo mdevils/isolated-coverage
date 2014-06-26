@@ -25,8 +25,8 @@ class Istanbul extends Tool {
         return this.shell.exec(instanbulBin, args);
     }
 
-    buildHtmlReport(coveragePath: string) {
-        return this.shell.exec(instanbulBin, ['report', 'html', coveragePath]);
+    buildReport(coveragePath: string, reporter: string) {
+        return this.shell.exec(instanbulBin, ['report', reporter, coveragePath]);
     }
 }
 

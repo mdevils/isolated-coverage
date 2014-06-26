@@ -32,6 +32,10 @@ while (inputArguments.length > 0) {
         case '--ignore':
             isolatedCoverage.addIgnore(argVal);
             break;
+        case '-R':
+        case '--reporter':
+            isolatedCoverage.setReporter(argVal);
+            break;
     }
 }
 

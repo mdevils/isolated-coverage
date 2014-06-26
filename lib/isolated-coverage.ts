@@ -18,6 +18,11 @@ class IsolatedCoverage {
     private buildCommand: string;
     private threadCount: number = 1;
     private ignores: string[] = [];
+    private reporter: string = 'html';
+
+    setReporter(reporter: string) {
+        this.reporter = reporter;
+    }
 
     addSourcePath(sourcePath: string) {
         this.sourcePaths.push(sourcePath);
@@ -115,7 +120,7 @@ class IsolatedCoverage {
             .then((result) => {
                 var coverageJsonPath = path.join(tmpProjectDir, 'coverage.json');
                 return vowFs.write(coverageJsonPath, JSON.stringify(result), 'utf8').then(() => {
-                    return istanbul.buildHtmlReport(coverageJsonPath);
+                    return istanbul.buildReport(coverageJsonPath, this.reporter);
                 });
             })
             .then(() => {
