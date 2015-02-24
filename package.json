@@ -6,7 +6,7 @@
   "author": "Marat Dulin",
   "license": "MIT",
   "dependencies": {
-    "chalk": "^0.4.0",
+    "chalk": "^1.0.0",
     "istanbul": "^0.2.11",
     "minimatch": "^0.3.0",
     "vow": "^0.4.4",
